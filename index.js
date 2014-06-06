@@ -11,6 +11,7 @@ money.connect(process.env.MONEY_DB,
   })
   .then(function() {
     console.log('connected to money . . .');
+    server.start();
   });
 
 var options = {
@@ -29,10 +30,12 @@ var server = Hapi.createServer('localhost', 8000, options);
 
 var hello = {
   handler: function(request, reply) {
-    // Render the view with the custom greeting
-    reply.view('index', {
-      greeting: 'hello world'
-    });
+    money.Tran.findAll()
+      .then(function(trans) {
+        reply.view('index', {
+          trans: trans
+        });
+      });
   }
 };
 
@@ -42,4 +45,14 @@ server.route({
   handler: hello.handler
 });
 
-server.start();
+server.route({
+  method: 'GET',
+  path: '/{path*}',
+  handler: {
+    directory: {
+      path: './pub',
+      listing: false,
+      index: false
+    }
+  }
+});

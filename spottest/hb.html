@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src=js/jquery-2.1.1.min.js></script>
-  <script src=js/handlebars-v1.3.0.js></script>
-  <script src=js/tmps.js></script>
+  <script src=jquery-2.1.1.min.js></script>
+  <script src=handlebars-v1.3.0.js></script>
+  <script src=tmps.js></script>
 </head>
 <body>
-header here
-{{{content}}}
 
 <div id=content-placeholder></div>
 
 <script>
   var data = { users: [
-      {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com", date: new Date() },
+      {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
       {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
       {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
     ]};
   $("#content-placeholder").html(Handlebars.templates['mytemplate'](data));
 </script>
 
-footer here
 </body>
 </html>

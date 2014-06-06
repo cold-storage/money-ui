@@ -2,5 +2,25 @@
 <p>{{caps greeting}}</p>
 <p>{{> rat}}
 
+<table>
+<tr>
+<th>Date</th>
+<th>Description</th>
+<th>Bucket</th>
+<th>Amount</th>
+</tr>
+{{#each trans}}
+<tr>
+<td>{{date date}}</td>
+<td><span class=description>{{description}}</span></td>
+<td>{{bucket}}</td>
+<td align=right>{{money amount}}</td>
+</tr>
+{{else}}
+<tr>
+<td>no trans</td>
+</tr>
+{{/each}}
+</table>
 
 {{log "Look at me!"}}
